@@ -86,12 +86,13 @@ const actions: thingToInstall[] = [
     default: true,
     action: async () => {
       execute("sudo pacman -S zsh --noconfirm");
-      const { makeDefaultShell } = await inquirer.prompt({
-        name: "makeDefaultShell",
-        type: "confirm",
-        message: "Make zsh the default shell?",
-      });
-      if (makeDefaultShell) execute("chsh -l /usr/bin/zsh");
+      // const { makeDefaultShell } = await inquirer.prompt({
+      //   name: "makeDefaultShell",
+      //   type: "confirm",
+      //   message: "Make zsh the default shell?",
+      // });
+      // if (makeDefaultShell) execute("chsh -s /usr/bin/zsh");
+      // this wasn't working for some reason
       return;
     },
   },
