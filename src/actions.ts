@@ -41,6 +41,46 @@ const actions: thingToInstall[] = [
       return;
     },
   },
+  {
+    name: "Node.js",
+    default: true,
+    action: async () => {
+      const { version } = await inquirer.prompt({
+        name: "version",
+        type: "list",
+        message: "Which Node.js version should be installed?",
+        choices: [
+          {
+            name: 'Node.js 14.X LTS "fermium"',
+            short: "14.X",
+            value: "nodejs-lts-fermium ",
+          },
+          {
+            name: 'Node.js 16.X LTS "gallium"',
+            short: "16.X",
+            value: "nodejs-lts-gallium",
+          },
+          {
+            name: 'Node.js 18.X LTS "hydrogen"',
+            short: "18.X",
+            value: "nodejs-lts-hydrogen",
+          },
+          { name: "latest", value: "nodejs" },
+        ],
+      });
+
+      execute(`sudo pacman -S ${version} --noconfirm`);
+      return;
+    },
+  },
+  {
+    name: "pnpm",
+    default: true,
+    action: () => {
+      execute("wget -qO- https://get.pnpm.io/install.sh | sh -");
+      return;
+    },
+  },
 ];
 
 export default actions;

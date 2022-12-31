@@ -42,6 +42,15 @@ program
       })),
     });
 
+    const { confirm } = await inquirer.prompt({
+      name: "confirm",
+      type: "confirm",
+      message:
+        "This will automatically install the above selected items, in that order.",
+    });
+
+    if (!confirm) process.exit(0);
+
     for (let item of items) {
       let data = actions.find((x) => x.name == item);
       if (!data) throw new Error("how did that happen");
