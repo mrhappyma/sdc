@@ -43,7 +43,7 @@ const actions: thingToInstall[] = [
   },
   {
     name: "Node.js",
-    default: true,
+    default: false,
     action: async () => {
       const { version } = await inquirer.prompt({
         name: "version",
@@ -78,6 +78,20 @@ const actions: thingToInstall[] = [
     default: true,
     action: () => {
       execute("wget -qO- https://get.pnpm.io/install.sh | sh -");
+      return;
+    },
+  },
+  {
+    name: "zsh",
+    default: true,
+    action: async () => {
+      execute("sudo pacman -S zsh --noconfirm");
+      const { makeDefaultShell } = await inquirer.prompt({
+        name: "makeDefaultShell",
+        type: "confirm",
+        message: "Make zsh the default shell?",
+      });
+      if (makeDefaultShell) execute("chsh -l /usr/bin/zsh");
       return;
     },
   },
