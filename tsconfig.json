@@ -1,0 +1,14 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "outDir": "built",
+    "lib": ["es2022"],
+    "module": "ES2022",
+    "target": "es2022",
+
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+  }
+}
