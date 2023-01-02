@@ -18,3 +18,5 @@ I won't stop you from using it yourself, but don't. Or do. idk. It should work e
 you need npm/pnpm and node to run something that can install those?
 
 I'm trying to get the node package sdc so that it can be run as `npx sdc` with just node :)
+
+[![asciicast](https://asciinema.org/a/9thxmkbKO9ydXiZnGtLXqe4BQ.svg)](https://asciinema.org/a/9thxmkbKO9ydXiZnGtLXqe4BQ)
