@@ -17,6 +17,8 @@ program
   .version("0.0.1")
   .addOption(new Option("-f, --force", "bypass checks"))
   .action(async (options) => {
+    console.clear();
+
     const checkingSpinner = ora("Checking OS").start();
     let osData;
     if (!options.force) {
