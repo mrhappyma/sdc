@@ -5,7 +5,7 @@ import { addEndingNotice } from "./sdc.js";
 const actions: thingToInstall[] = [
   {
     name: "Discord",
-    default: false,
+    default: true,
     action: async () => {
       const { type } = await inquirer.prompt({
         name: "type",
@@ -19,14 +19,10 @@ const actions: thingToInstall[] = [
       });
 
       if (type == "Discord Canary") {
-        execute(
-          "yay -S discord-canary --answerclean NotInstalled --answerdiff None"
-        );
+        execute("yay -S discord-canary --sudoloop --noconfirm");
       }
       if (type == "Discord PTB") {
-        execute(
-          "yay -S discord-ptb --answerclean NotInstalled --answerdiff None"
-        );
+        execute("yay -S discord-ptb --sudoloop --noconfirm");
       }
       if (type == "Discord Stable") {
         execute("sudo pacman -S discord --noconfirm");
@@ -36,9 +32,9 @@ const actions: thingToInstall[] = [
   },
   {
     name: "Fig",
-    default: false,
+    default: true,
     action: () => {
-      execute("yay -S fig --answerclean NotInstalled --answerdiff None");
+      execute("yay -S fig --sudoloop --noconfirm");
       addEndingNotice(
         "Finish setting up fig: `fig login` and `fig plugins sync`"
       );
