@@ -1,5 +1,6 @@
 import execute from "./execute-command.js";
 import inquirer from "inquirer";
+import { addEndingNotice } from "./sdc.js";
 
 const actions: thingToInstall[] = [
   {
@@ -38,6 +39,9 @@ const actions: thingToInstall[] = [
     default: false,
     action: () => {
       execute("yay -S fig --answerclean NotInstalled --answerdiff None");
+      addEndingNotice(
+        "Finish setting up fig: `fig login` and `fig plugins sync`"
+      );
       return;
     },
   },
@@ -74,14 +78,6 @@ const actions: thingToInstall[] = [
     },
   },
   {
-    name: "pnpm",
-    default: true,
-    action: () => {
-      execute("wget -qO- https://get.pnpm.io/install.sh | sh -");
-      return;
-    },
-  },
-  {
     name: "zsh",
     default: true,
     action: async () => {
@@ -93,6 +89,18 @@ const actions: thingToInstall[] = [
       // });
       // if (makeDefaultShell) execute("chsh -s /usr/bin/zsh");
       // this wasn't working for some reason
+      addEndingNotice("Set zsh as the default shell: `chsh -s /usr/bin/zsh`");
+      return;
+    },
+  },
+  {
+    name: "pnpm",
+    default: true,
+    action: () => {
+      execute("wget -qO- https://get.pnpm.io/install.sh | sh -");
+      addEndingNotice(
+        "If this script wasn't running in zsh, do that again in zsh so that it adds stuff to .zshrc"
+      );
       return;
     },
   },

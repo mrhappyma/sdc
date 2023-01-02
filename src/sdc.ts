@@ -6,6 +6,11 @@ import ora from "ora";
 import fs from "node:fs";
 import actions from "./actions.js";
 
+let endingNotices: string[] = [];
+export const addEndingNotice = (notice: string) => {
+  endingNotices.push(notice);
+};
+
 program
   .name("sdc")
   .description('"setup dominic\'s computer" cli tool')
@@ -62,6 +67,12 @@ program
       await data.action();
 
       spinner.succeed("Installed " + data.name);
+    }
+
+    console.clear();
+    ora("Finished! More stuff you have to do:").succeed();
+    for (let notice of endingNotices) {
+      console.log(notice);
     }
   });
 program.parse();
