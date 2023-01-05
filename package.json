@@ -30,6 +30,6 @@
   ],
   "files": ["built/**/*"],
   "scripts" : {
-    "prepublish": "tsc --build --force"
+    "prepublishOnly": "tsc --build --force"
   }
 }

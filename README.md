@@ -6,17 +6,10 @@ I switched Linux distros! And with that started making something I've been wanti
 
 I won't stop you from using it yourself, but don't. Or do. idk. It should work either way.
 
-## Building & Running
+## Running
 
-- clone the repo
-- cd into it
-- `pnpm install`
-- `npx tsc`
-- `npm install -g .`
-- profit, you can now use the `sdc` command
+just `npx @usermn/sdc`!
 
-you need npm/pnpm and node to run something that can install those?
-
-I'm trying to get the node package sdc so that it can be run as `npx sdc` with just node :)
+## Demo
 
 [![asciicast](https://asciinema.org/a/9thxmkbKO9ydXiZnGtLXqe4BQ.svg)](https://asciinema.org/a/9thxmkbKO9ydXiZnGtLXqe4BQ)
