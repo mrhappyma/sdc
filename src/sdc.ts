@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 
+const version = "0.0.3";
+
 import { Option, program } from "commander";
 import { addCompletionSpecCommand } from "@fig/complete-commander";
 import inquirer from "inquirer";
@@ -15,7 +17,7 @@ export const addEndingNotice = (notice: string) => {
 program
   .name("sdc")
   .description('"setup dominic\'s computer" cli tool')
-  .version("0.0.2")
+  .version(version)
   .addOption(new Option("-f, --force", "bypass checks"))
   .addOption(
     new Option(
