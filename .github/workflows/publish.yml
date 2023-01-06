@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - run: npm i
+      - run: npm i --force
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - run: npm i
+      - run: npm i --force
       - run: npx tsc
       - run: mkdir autocomplete-generation
       - run: touch autocomplete-generation/sdc.ts
