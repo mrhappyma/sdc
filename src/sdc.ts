@@ -14,11 +14,16 @@ export const addEndingNotice = (notice: string) => {
 program
   .name("sdc")
   .description('"setup dominic\'s computer" cli tool')
-  .version("0.0.1")
+  .version("0.0.2")
   .addOption(new Option("-f, --force", "bypass checks"))
+  .addOption(
+    new Option(
+      "--no-end-clear",
+      "skip clearing the console at the end so that output can be viewed"
+    )
+  )
   .action(async (options) => {
     console.clear();
-
     const checkingSpinner = ora("Checking OS").start();
     let osData;
     if (!options.force) {
@@ -70,8 +75,7 @@ program
 
       spinner.succeed("Installed " + data.name);
     }
-
-    console.clear();
+    if (options.endClear) console.clear();
     ora("Finished! More stuff you have to do:").succeed();
     for (let notice of endingNotices) {
       console.log(notice);

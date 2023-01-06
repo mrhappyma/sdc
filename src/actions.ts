@@ -100,6 +100,48 @@ const actions: thingToInstall[] = [
       return;
     },
   },
+  {
+    name: "VS Code",
+    default: true,
+    action: async () => {
+      const { version } = await inquirer.prompt({
+        name: "version",
+        message: "Which VS Code?",
+        type: "list",
+        default: "code-oss",
+        choices: [
+          {
+            name: '"Code - OSS" official Arch Linux open-source release. Open VSX.',
+            value: "code",
+            short: '"Code - OSS"',
+          },
+          {
+            name: "Microsoft proprietary release",
+            value: "visual-studio-code-bin",
+            short: "Microsoft standard version",
+          },
+          {
+            name: "Microsoft proprietary release - insiders",
+            value: "visual-studio-code-insiders-bin",
+            short: "Microsoft insiders version",
+          },
+          {
+            name: "VSCodium - Community open-source release. No telemetry. Open VSX.",
+            short: "VSCodium",
+            value: "vscodium",
+          },
+        ],
+      });
+
+      if (version == "code") {
+        execute("sudo pacman -S code --noconfirm");
+        return;
+      } else {
+        execute(`yay -S ${version} --sudoloop --noconfirm`);
+        return;
+      }
+    },
+  },
 ];
 
 export default actions;
