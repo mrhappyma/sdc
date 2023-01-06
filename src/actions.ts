@@ -142,6 +142,14 @@ const actions: thingToInstall[] = [
       }
     },
   },
+  {
+    name: "gh cli",
+    default: true,
+    action: () => {
+      execute("sudo pacman -S github-cli --noconfirm");
+      return;
+    },
+  },
 ];
 
 export default actions;
