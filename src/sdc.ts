@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 import { Option, program } from "commander";
+import { addCompletionSpecCommand } from "@fig/complete-commander";
 import inquirer from "inquirer";
 import ora from "ora";
 import fs from "node:fs";
@@ -81,4 +82,7 @@ program
       console.log(notice);
     }
   });
+
+addCompletionSpecCommand(program);
+
 program.parse();

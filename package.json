@@ -13,6 +13,7 @@
   "main": "built/sdc.js",
   "bin": "./built/sdc.js",
   "dependencies": {
+    "@fig/complete-commander": "^2.0.1",
     "chalk": "^5.2.0",
     "commander": "^9.4.1",
     "inquirer": "^9.1.4",
@@ -28,8 +29,10 @@
   "os": [
     "linux"
   ],
-  "files": ["built/**/*"],
-  "scripts" : {
+  "files": [
+    "built/**/*"
+  ],
+  "scripts": {
     "prepublishOnly": "tsc --build --force"
   }
 }

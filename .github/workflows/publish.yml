@@ -1,4 +1,4 @@
-name: NPM Publish
+name: Publish
 
 on:
   release:
@@ -6,15 +6,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
+  npm-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
-        with:
-          node-version: 10
       - run: npm i
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: "public"
+
+  autocomplete-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - run: npm i
+      - run: npx tsc
+      - run: mkdir autocomplete-generation
+      - run: touch autocomplete-generation/sdc.ts
+      - run: node built/sdc.js generate-fig-spec > autocomplete-generation/sdc.ts
+      - name: Create Autocomplete PR
+        uses: withfig/push-to-fig-autocomplete-action@v1
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          autocomplete-spec-name: "@usermn/sdc"
+          spec-path: autocomplete-generation/sdc.ts
+          diff-based-versioning: true
+          new-spec-version: ${{ github.event.release.tag_name }}
