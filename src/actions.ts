@@ -1,6 +1,7 @@
 import execute from "./execute-command.js";
 import inquirer from "inquirer";
 import { addEndingNotice } from "./sdc.js";
+import shell from "shelljs";
 
 const actions: thingToInstall[] = [
   {
@@ -12,20 +13,31 @@ const actions: thingToInstall[] = [
         type: "list",
         message: "Which Discord release should be installed?",
         choices: [
-          { name: "Discord Stable", short: "Stable" },
-          { name: "Discord PTB", short: "PTB" },
-          { name: "Discord Canary", short: "Canary" },
+          { name: "Discord Stable", short: "Stable", value: "stable" },
+          { name: "Discord PTB", short: "PTB", value: "ptb" },
+          { name: "Discord Canary", short: "Canary", value: "canary" },
         ],
       });
-
-      if (type == "Discord Canary") {
-        execute("yay -S discord-canary --sudoloop --noconfirm");
-      }
-      if (type == "Discord PTB") {
-        execute("yay -S discord-ptb --sudoloop --noconfirm");
-      }
-      if (type == "Discord Stable") {
+      if (type == "stable") {
         execute("sudo pacman -S discord --noconfirm");
+      } else {
+        execute(`yay -S discord-${type} --sudoloop --noconfirm`);
+      }
+
+      const { replugged } = await inquirer.prompt({
+        name: "replugged",
+        message: "Install replugged?",
+        type: "confirm",
+      });
+      if (replugged) {
+        if (!shell.which("pnpm")) throw new Error("Requires pnpm!");
+        execute(
+          "git clone https://github.com/replugged-org/replugged.git ~/replugged"
+        );
+        execute("(cd ~/replugged && pnpm i)");
+        execute("(cd ~/replugged && pnpm build)");
+        execute(`(cd ~/replugged && pnpm plug ${type})`);
+        addEndingNotice("make sure replugged installed correctly");
       }
       return;
     },
