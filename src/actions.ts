@@ -150,6 +150,14 @@ const actions: thingToInstall[] = [
       return;
     },
   },
+  {
+    name: "Tilix",
+    default: true,
+    action: () => {
+      execute("sudo pacman -S tilix --noconfirm");
+      return;
+    },
+  },
 ];
 
 export default actions;
