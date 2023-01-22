@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-const version = "0.0.4";
+const version = "0.0.5";
 
 import { Option, program } from "commander";
 import { addCompletionSpecCommand } from "@fig/complete-commander";
