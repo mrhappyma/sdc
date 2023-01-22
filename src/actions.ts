@@ -133,6 +133,8 @@ const actions: thingToInstall[] = [
         ],
       });
 
+      addEndingNotice("Sign into VSCode");
+
       if (version == "code") {
         execute("sudo pacman -S code --noconfirm");
         return;
@@ -147,6 +149,8 @@ const actions: thingToInstall[] = [
     default: true,
     action: () => {
       execute("sudo pacman -S github-cli --noconfirm");
+      addEndingNotice("Set up gh cli");
+      addEndingNotice("Set up commit signing");
       return;
     },
   },
