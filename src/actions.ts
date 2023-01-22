@@ -157,8 +157,21 @@ const actions: thingToInstall[] = [
   {
     name: "Tilix",
     default: true,
-    action: () => {
+    action: async () => {
       execute("sudo pacman -S tilix --noconfirm");
+      const { dracula } = await inquirer.prompt({
+        name: "dracula",
+        type: "confirm",
+        message: "Install the dracula theme?",
+      });
+      if (dracula) {
+        execute("mkdir ~/.config/tilix");
+        execute("mkdir ~/.config/tilix/schemes");
+        execute(
+          "(cd ~/.config/tilix/schemes && curl -O https://raw.githubusercontent.com/dracula/tilix/master/Dracula.json)"
+        );
+        addEndingNotice("Set Tilix theme");
+      }
       return;
     },
   },
