@@ -6,16 +6,16 @@ specifiers:
   '@types/node': ^18.11.18
   '@types/shelljs': ^0.8.11
   chalk: ^5.2.0
-  commander: ^9.4.1
+  commander: ^10.0.0
   inquirer: ^9.1.4
   ora: ^6.1.2
   shelljs: ^0.8.5
   typescript: ^4.9.4
 
 dependencies:
-  '@fig/complete-commander': 2.0.1_commander@9.4.1
+  '@fig/complete-commander': 2.0.1_commander@10.0.0
   chalk: 5.2.0
-  commander: 9.4.1
+  commander: 10.0.0
   inquirer: 9.1.4
   ora: 6.1.2
   shelljs: 0.8.5
@@ -28,12 +28,12 @@ devDependencies:
 
 packages:
 
-  /@fig/complete-commander/2.0.1_commander@9.4.1:
+  /@fig/complete-commander/2.0.1_commander@10.0.0:
     resolution: {integrity: sha512-AbGETely7iwD4F7XHe4g7pW6icWYYqJMdQog8CdEi9syU/av5L0O24BvCfgEeGO6TRPMpC+rFL7ZDJsqRtckOA==}
     peerDependencies:
       commander: ^8.0.0
     dependencies:
-      commander: 9.4.1
+      commander: 10.0.0
       prettier: 2.8.1
     dev: false
 
@@ -150,9 +150,9 @@ packages:
     engines: {node: '>=0.8'}
     dev: false
 
-  /commander/9.4.1:
-    resolution: {integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==}
-    engines: {node: ^12.20.0 || >=14}
+  /commander/10.0.0:
+    resolution: {integrity: sha512-zS5PnTI22FIRM6ylNW8G4Ap0IEOyk62fhLSD0+uHRT9McRCLGpkVNvao4bjimpK/GShynyQkFFxHhwMcETmduA==}
+    engines: {node: '>=14'}
     dev: false
 
   /concat-map/0.0.1:
