@@ -8,7 +8,7 @@ import inquirer from "inquirer";
 import ora from "ora";
 import fs from "node:fs";
 import actions from "./actions.js";
-import { getOptions, setOptions } from "./optionsStore.js";
+import { setOptions } from "./optionsStore.js";
 
 let endingNotices: string[] = [];
 export const addEndingNotice = (notice: string) => {
@@ -28,6 +28,9 @@ program
   )
   .addOption(
     new Option("--debug-options", "print options to console for debugging")
+  )
+  .addOption(
+    new Option("-c, --confirm-commands", "confirm commands before running them")
   )
   .action(async (options) => {
     setOptions(options);

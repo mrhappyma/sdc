@@ -1,4 +1,4 @@
-let options = {};
+let options: any = {};
 
 export function setOptions(opts: any) {
   options = opts;
