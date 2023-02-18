@@ -1,6 +1,6 @@
 {
   "name": "@usermn/sdc",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "license": "MIT",
   "description": "\"setup dominic's computer\" cli tool",
   "bugs": "https://github.com/mrhappyma/sdc/issues",
