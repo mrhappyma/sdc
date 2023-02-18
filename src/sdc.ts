@@ -8,6 +8,7 @@ import inquirer from "inquirer";
 import ora from "ora";
 import fs from "node:fs";
 import actions from "./actions.js";
+import { getOptions, setOptions } from "./optionsStore.js";
 
 let endingNotices: string[] = [];
 export const addEndingNotice = (notice: string) => {
@@ -25,8 +26,16 @@ program
       "skip clearing the console at the end so that output can be viewed"
     )
   )
+  .addOption(
+    new Option("--debug-options", "print options to console for debugging")
+  )
   .action(async (options) => {
+    setOptions(options);
     console.clear();
+    if (options.debugOptions) {
+      console.log(options);
+      return;
+    }
     const checkingSpinner = ora("Checking OS").start();
     let osData;
     if (!options.force) {
