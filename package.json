@@ -17,7 +17,7 @@
     "@fig/complete-commander": "^2.0.1",
     "chalk": "^5.2.0",
     "commander": "^10.0.0",
-    "inquirer": "^9.1.4",
+    "inquirer": "^9.2.7",
     "ora": "^6.1.2",
     "shelljs": "^0.8.5"
   },
